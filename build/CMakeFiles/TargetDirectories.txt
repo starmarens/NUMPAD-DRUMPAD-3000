@@ -1,0 +1,3 @@
+/Users/georgelopez/Desktop/NUMPAD DRUMPAD 3000/build/CMakeFiles/NumpadDrumpad3000.dir
+/Users/georgelopez/Desktop/NUMPAD DRUMPAD 3000/build/CMakeFiles/edit_cache.dir
+/Users/georgelopez/Desktop/NUMPAD DRUMPAD 3000/build/CMakeFiles/rebuild_cache.dir
