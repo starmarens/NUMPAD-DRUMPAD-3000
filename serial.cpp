@@ -2,8 +2,15 @@
 #include <iostream>
 #include <string>
 #include <filesystem>
+#include <cstring>
 #ifdef _WIN32
 #include <windows.h>
+#elif __APPLE__
+#include "TargetConditionals.h"
+#include <fcntl.h>
+#include <termios.h>
+#include <unistd.h>
+
 #endif
 
 using namespace std;
@@ -50,7 +57,7 @@ string Serial::findCOMports(){
         if (ReadFile(h, buffer, sizeof(buffer) - 1, &bytesRead, nullptr) && bytesRead > 0) {
             buffer[bytesRead] = '\0'; // Null-terminate the buffer
             if(string received(buffer) == "yes"){
-                return port
+                return port;
             }
         } 
             else {
@@ -60,11 +67,42 @@ string Serial::findCOMports(){
     }
 #else
     // macOS/Linux: Look for tty.* and cu.* devices
-    for (const auto& entry : std::filesystem::directory_iterator("/dev")) {
-        std::string name = entry.path().filename();
-        if (name.find("tty.usb") == 0 || name.find("ttyACM") == 0 || name.find("ttyUSB") == 0 || name.find("cu.usb") == 0) {
+    for (const auto& entry : filesystem::directory_iterator("/dev")) {
+        string name = entry.path().filename();
+        if (name.find("tty.usb") == 0 || name.find("tty.usbserial")) {
+           int port = open(name.c_str(),  O_RDWR | O_NOCTTY | O_SYNC);
+
+            termios tty{};
+
+            cfsetospeed(&tty, B115200);
+            cfsetispeed(&tty, B115200);
+
+            tty.c_cflag &= ~PARENB;    // no parity
+            tty.c_cflag &= ~CSTOPB;    // 1 stop bit
+            tty.c_cflag &= ~CSIZE;
+            tty.c_cflag |= CS8;        // 8 bits per byte
+            tty.c_cflag &= ~CRTSCTS;   // no flow control
+            tty.c_cflag |= CREAD | CLOCAL; // turn on READ and ignore ctrl lines
+
+            // Make raw
+            tty.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG); // raw input
+            tty.c_iflag &= ~(IXON | IXOFF | IXANY);         // no software flow
+            tty.c_oflag &= ~OPOST;    
+            tcsetattr(port, TCSANOW, &tty);
+
+            string msg = "Are you ESP32\n";
+            write(port, msg.c_str(), strlen(msg.c_str()));
+
+            char buffer[256];
+            int bytes = read(port, buffer, sizeof(buffer) - 1);
+            buffer[bytes] = "\0";
+            string response = received_data(buffer);
+            if (response == "yes" )
+                return name;
+
+
             
-        }
+                }
 
 }
 #endif
