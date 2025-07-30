@@ -177,6 +177,30 @@ menu.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/NumpadDrumpad3000.dir/build.make CMakeFiles/NumpadDrumpad3000.dir/menu.cpp.s
 .PHONY : menu.cpp.s
 
+serial.o: serial.cpp.o
+.PHONY : serial.o
+
+# target to build an object file
+serial.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NumpadDrumpad3000.dir/build.make CMakeFiles/NumpadDrumpad3000.dir/serial.cpp.o
+.PHONY : serial.cpp.o
+
+serial.i: serial.cpp.i
+.PHONY : serial.i
+
+# target to preprocess a source file
+serial.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NumpadDrumpad3000.dir/build.make CMakeFiles/NumpadDrumpad3000.dir/serial.cpp.i
+.PHONY : serial.cpp.i
+
+serial.s: serial.cpp.s
+.PHONY : serial.s
+
+# target to generate assembly for a file
+serial.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/NumpadDrumpad3000.dir/build.make CMakeFiles/NumpadDrumpad3000.dir/serial.cpp.s
+.PHONY : serial.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +216,9 @@ help:
 	@echo "... menu.o"
 	@echo "... menu.i"
 	@echo "... menu.s"
+	@echo "... serial.o"
+	@echo "... serial.i"
+	@echo "... serial.s"
 .PHONY : help
 
 

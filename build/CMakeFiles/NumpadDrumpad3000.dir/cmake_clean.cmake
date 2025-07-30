@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/NumpadDrumpad3000.dir/main.cpp.o.d"
   "CMakeFiles/NumpadDrumpad3000.dir/menu.cpp.o"
   "CMakeFiles/NumpadDrumpad3000.dir/menu.cpp.o.d"
+  "CMakeFiles/NumpadDrumpad3000.dir/serial.cpp.o"
+  "CMakeFiles/NumpadDrumpad3000.dir/serial.cpp.o.d"
   "NumpadDrumpad3000"
   "NumpadDrumpad3000.pdb"
 )

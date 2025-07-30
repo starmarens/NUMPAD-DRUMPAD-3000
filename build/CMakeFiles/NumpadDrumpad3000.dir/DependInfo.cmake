@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/georgelopez/Desktop/NUMPAD DRUMPAD 3000/main.cpp" "CMakeFiles/NumpadDrumpad3000.dir/main.cpp.o" "gcc" "CMakeFiles/NumpadDrumpad3000.dir/main.cpp.o.d"
   "/Users/georgelopez/Desktop/NUMPAD DRUMPAD 3000/menu.cpp" "CMakeFiles/NumpadDrumpad3000.dir/menu.cpp.o" "gcc" "CMakeFiles/NumpadDrumpad3000.dir/menu.cpp.o.d"
+  "/Users/georgelopez/Desktop/NUMPAD DRUMPAD 3000/serial.cpp" "CMakeFiles/NumpadDrumpad3000.dir/serial.cpp.o" "gcc" "CMakeFiles/NumpadDrumpad3000.dir/serial.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

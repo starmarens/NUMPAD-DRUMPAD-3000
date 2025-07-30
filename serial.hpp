@@ -2,6 +2,8 @@
 #define SERIAL_H
 #include <string>
 
+using namespace std;
+
 
 class Serial{
 
@@ -11,7 +13,7 @@ class Serial{
    void read();
    string findCOMports();
 
-}
+};
 
 
 #endif
