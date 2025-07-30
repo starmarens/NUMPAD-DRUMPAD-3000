@@ -7,7 +7,7 @@ using namespace std;
 
 class Serial{
 
-    public:
+public:
     Serial();
    void test();
    void read();
